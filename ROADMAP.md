@@ -1,35 +1,24 @@
 # µIX roadmap
 
-All milestones are proposals and depend on available infrastructure and actual participant interest.
+## Open framework track
 
-## Phase 0 — Project foundation
+- [ ] Finalize MIT / CC BY 4.0 license texts and rights inventory
+- [ ] Draft versioned specification v0.1 using existing Internet standards
+- [ ] Define Nano, Micro and Regional profiles
+- [ ] Extract generic reference architecture and reusable deployment configurations
+- [ ] Validate virtual BGP lab, filtering, RPKI, failover and monitoring
+- [ ] Develop conformance and interoperability tests
+- [ ] Establish contribution and governance processes
+- [ ] Publish international project website and alpha release
 
-- [x] Clarify µIX / YIX brand and reserve yix.no for exchange use
-- [x] Establish project documentation and draft policies
-- [ ] Validate need with prospective local and regional network operators
-- [ ] Document constraints, budget and potential Sirdal site connectivity
+## SIR1 physical reference implementation track
 
-## Phase 1 — Virtual proof of concept
+- [ ] Confirm facility, power, connectivity, funding and participant interest
+- [ ] Select hardware and obtain legitimate ASN/IP resources where required
+- [ ] Finalize operating, legal and participant terms
+- [ ] Integrate with Ploos Datacenter without mandatory commercial bundling
+- [ ] Validate fault isolation, recovery, monitoring and routing policies
+- [ ] Run controlled pilot with consenting participants
+- [ ] Publish verified operational information and consider PeeringDB listing when operational
 
-- [ ] Build a reproducible multi-AS BGP lab (no production connectivity)
-- [ ] Compare BIRD and FRRouting for route-server operations
-- [ ] Test bilateral sessions, multilateral route-server sessions and IPv4/IPv6
-- [ ] Test prefix filtering, RPKI-invalid handling, max-prefix and outage scenarios
-- [ ] Document automation, monitoring and operational runbooks
-
-## Phase 2 — Physical design and readiness
-
-- [ ] Confirm facility, power, connectivity and initial participants
-- [ ] Select switch hardware, port speeds, management and redundancy strategy
-- [ ] Determine legitimate ASN/IP resource needs and obtain resources where needed
-- [ ] Finalize membership, acceptable-use, privacy and incident policies
-- [ ] Establish contacts and commercial/legal operating terms
-
-## Phase 3 — Pilot and possible launch
-
-- [ ] Invite a small set of consenting participants to a controlled pilot
-- [ ] Validate fault isolation and routing-policy enforcement
-- [ ] Publish verified participant and operational information only with appropriate consent
-- [ ] Consider public launch and PeeringDB entry when service is operational
-
-No date or launch commitment has been made.
+No launch date, production readiness or industry-standard status is claimed.
