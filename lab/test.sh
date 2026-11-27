@@ -58,3 +58,18 @@ for node in rs rs2 b c; do
   fi
 done
 echo "Unauthorized IPv4 and IPv6 prefixes rejected"
+for proto in rs4 rs2_4 rs6 rs2_6; do
+  output=$(docker compose exec -T a birdc show route export "$proto")
+  case "$proto" in
+    *4) grep -Fq '192.0.2.128/25' <<< "$output" ;;
+    *6) grep -Fq '2001:db8:aaaa::/48' <<< "$output" ;;
+  esac
+done
+for node in rs rs2 b c; do
+  output=$(docker compose exec -T "$node" birdc show route all)
+  if grep -Eq '192\.0\.2\.128/25|2001:db8:aaaa::/48' <<< "$output"; then
+    echo "ROA-invalid prefix accepted on $node" >&2
+    exit 1
+  fi
+done
+echo "ROA-invalid prefixes rejected; valid and uncovered prefixes retained"
