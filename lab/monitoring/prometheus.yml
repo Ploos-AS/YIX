@@ -1,0 +1,6 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: muix
+    static_configs:
+      - targets: ['metrics-rs:9105', 'metrics-rs2:9105']
