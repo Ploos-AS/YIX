@@ -1,0 +1,36 @@
+services:
+  rs:
+    volumes:
+      - rs-socket:/run/bird
+  rs2:
+    volumes:
+      - rs2-socket:/run/bird
+  metrics-rs:
+    build: ./monitoring
+    volumes:
+      - rs-socket:/run/bird:ro
+    networks: [management]
+  metrics-rs2:
+    build: ./monitoring
+    volumes:
+      - rs2-socket:/run/bird:ro
+    networks: [management]
+  prometheus:
+    image: prom/prometheus:v3.2.1
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    networks: [management]
+    ports: ["127.0.0.1:9090:9090"]
+  grafana:
+    image: grafana/grafana:11.6.0
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-lab-only-change-me}
+    volumes:
+      - ./monitoring/grafana-datasource.yml:/etc/grafana/provisioning/datasources/muix.yml:ro
+    networks: [management]
+    ports: ["127.0.0.1:3000:3000"]
+networks:
+  management: {}
+volumes:
+  rs-socket: {}
+  rs2-socket: {}
