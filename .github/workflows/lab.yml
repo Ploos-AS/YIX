@@ -4,10 +4,12 @@ on:
     paths:
       - 'lab/**'
       - '.github/workflows/lab.yml'
+      - 'docs/alpha-validation.md'
   pull_request:
     paths:
       - 'lab/**'
       - '.github/workflows/lab.yml'
+      - 'docs/alpha-validation.md'
   workflow_dispatch:
 permissions:
   contents: read
