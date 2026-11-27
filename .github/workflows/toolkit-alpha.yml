@@ -16,3 +16,4 @@ jobs:
             python toolkit/muixctl.py validate "$inventory" || exit 1
             python toolkit/muixctl.py plan "$inventory" || exit 1
           done
+      - run: python tools/check_alpha_links.py
