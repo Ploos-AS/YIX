@@ -29,7 +29,11 @@ ready() {
     [[ $(grep -Ec '^[[:space:]]*[^[:space:]]+[[:space:]]+BGP[[:space:]].*Established' <<< "$output") -eq "$expected" ]] || return 1
     output=$(docker compose exec -T "$node" birdc show route table master4 table master6 all) || return 1
     for prefix in 198.51.100.0/26 198.51.100.64/26 198.51.100.128/26 2001:db8:11::/48 2001:db8:12::/48 2001:db8:13::/48; do
-      grep -Fq "$prefix" <<< "$output" || return 1
+      if [[ "$node" == b && ( "$prefix" == 198.51.100.0/26 || "$prefix" == 2001:db8:11::/48 ) ]]; then
+        if grep -Fq "$prefix" <<< "$output"; then return 1; fi
+      else
+        grep -Fq "$prefix" <<< "$output" || return 1
+      fi
     done
   done
 }
@@ -91,3 +95,5 @@ for node in rs rs2 b c; do
   fi
 done
 echo "ROA-invalid prefixes rejected; valid and uncovered prefixes retained"
+
+echo "Selective export verified during normal operation and failover"
