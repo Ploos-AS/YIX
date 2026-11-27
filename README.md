@@ -2,44 +2,38 @@
 
 **Small exchange. Big connections.**
 
-µIX (ASCII: **YIX**) is a proposed small-scale, carrier-neutral Internet Exchange Point (IXP) initiative by **Ploos AS**, intended to start at a future micro datacenter in **Sirdal, Norway**.
+An open framework for small, distributed Internet Exchanges, initiated by Ploos AS.
 
-- Website: [yix.no](https://yix.no) (reserved for the project; no live service implied)
-- Project name: **µIX — Micro Internet eXchange**
-- Repository name and technical identifier: **YIX**
-- Status: **concept / planning** — no exchange fabric, participants, ASN, or production peering service is claimed
+µIX (ASCII: YIX) aims to enable independent operators to establish affordable, carrier-neutral local and regional peering points using existing Internet standards, reusable configurations, operational guidance and conformance tests.
 
-## Purpose
+## Principles
 
-Help independent networks exchange traffic locally through a neutral Layer 2 peering fabric. A future deployment could reduce unnecessary traffic detours and create a regional interconnection point, subject to demand, connectivity, funding, and operational readiness.
-
-Ploos AS would operate the initial infrastructure; **neutral access and equal technical peering conditions** are design goals, not an assertion of independent governance.
+Open specification, open source, vendor neutrality, carrier neutrality, decentralized operation and commercial freedom. No mandatory central infrastructure, Ploos service purchase or framework licensing fees. Each exchange operates independently; inter-site connectivity is optional and must not imply a shared Layer 2 failure domain.
 
 ## Scope
 
-Initial planning covers:
+Ethernet peering LANs, IPv4/IPv6 bilateral and optional route-server peering, BGP hygiene, RPKI, IRR filtering, monitoring, onboarding, security and reproducible deployment. Proposed Nano, Micro and Regional profiles will be specified and tested separately.
 
-- An Ethernet peering LAN with documented port and participant policies
-- IPv4 and IPv6 bilateral peering, with optional route servers
-- BGP routing hygiene, RPKI-based route validation, IRR-based filtering where appropriate, and monitoring
-- Participant onboarding, maintenance, incident communication and public operational documentation
-- A virtual lab to test designs before buying hardware
+## First planned physical reference implementation
 
-No live IP allocations, ASN, switch ports, member list, commercial pricing or uptime guarantees are defined yet.
+YIX-SIR1 in Sirdal, Norway, is the first planned physical implementation, initially proposed for a future Ploos micro datacenter. No live fabric, participants, ASN, production service or SLA is claimed. Site-specific choices are not universal requirements.
 
-## Documents
+## Project status
+
+Early development; not a ratified industry standard. The virtual lab and existing site documentation are inputs to the future versioned specification.
 
 - [Architecture](docs/architecture.md)
-- [Peering principles](docs/peering-policy.md)
+- [Peering policy](docs/peering-policy.md)
 - [Roadmap](ROADMAP.md)
-- [Security and disclosure](SECURITY.md)
+- [Security](SECURITY.md)
+- [Licensing policy](LICENSING.md)
+
+Website: https://yix.no (publication pending verification).
 
 ## Relationship to Ploos
 
-µIX is a peering and interconnection initiative, distinct from Ploos Datacenter, Ploos VPS and the QIX/IIX URL-shortener SaaS products. Neither `yix.no` nor this repository is intended for URL shortening.
+Ploos AS initiates the framework and proposes to operate SIR1. Independent implementations need not purchase Ploos services. The project is distinct from Ploos Datacenter, Ploos VPS and QIX/IIX URL shortening.
 
-## Contributing
+## Contributions
 
-Architecture feedback and documentation contributions are welcome as the project matures. Do not post credentials, production configs, customer data or sensitive network details in public issues or commits.
-
-© Ploos AS. Licensing for code and documentation will be determined before external reuse is invited.
+Feedback and contributions are welcome. Do not publish secrets, production configurations or sensitive participant data.
