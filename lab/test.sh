@@ -19,7 +19,7 @@ ready() {
     output=$(docker compose exec -T "$node" birdc show protocols) || return 1
     expected=$((active * 2))
     [[ $(grep -c 'Established' <<< "$output") -eq "$expected" ]] || return 1
-    output=$(docker compose exec -T "$node" birdc show route all) || return 1
+    output=$(docker compose exec -T "$node" birdc show route table master4 table master6 all) || return 1
     for prefix in 198.51.100.0/26 198.51.100.64/26 198.51.100.128/26 2001:db8:11::/48 2001:db8:12::/48 2001:db8:13::/48; do
       grep -Fq "$prefix" <<< "$output" || return 1
     done
@@ -51,10 +51,26 @@ for node in rs rs2; do
   done
 done
 for node in rs rs2 b c; do
-  output=$(docker compose exec -T "$node" birdc show route all)
+  output=$(docker compose exec -T "$node" birdc show route table master4 table master6 all)
   if grep -Eq '203\.0\.113\.0/24|2001:db8:ffff::/48' <<< "$output"; then
     echo "Unauthorized prefix accepted on $node" >&2
     exit 1
   fi
 done
 echo "Unauthorized IPv4 and IPv6 prefixes rejected"
+for proto in rs4 rs2_4 rs6 rs2_6; do
+  output=$(docker compose exec -T a birdc show route export "$proto")
+  case "$proto" in
+    *4) grep -Fq '192.0.2.128/25' <<< "$output" ;;
+    *6) grep -Fq '2001:db8:aaaa::/48' <<< "$output" ;;
+  esac
+done
+for node in rs rs2 b c; do
+  output=$(docker compose exec -T "$node" birdc show route table master4 table master6 all)
+  if grep -Eq '192\.0\.2\.128/25|2001:db8:aaaa::/48' <<< "$output"; then
+    echo "ROA-invalid prefix accepted on $node" >&2
+    printf '%s\n' "$output" >&2
+    exit 1
+  fi
+done
+echo "ROA-invalid prefixes rejected; valid and uncovered prefixes retained"
