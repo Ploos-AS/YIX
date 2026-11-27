@@ -2,14 +2,19 @@
 
 ## Open framework track
 
-- [ ] Finalize MIT / CC BY 4.0 license texts and rights inventory
-- [ ] Draft versioned specification v0.1 using existing Internet standards
-- [ ] Define Nano, Micro and Regional profiles
-- [ ] Extract generic reference architecture and reusable deployment configurations
+- [x] Add MIT / CC BY 4.0 license texts
+- [ ] Complete rights inventory
+- [x] Draft versioned specification v0.1 using existing Internet standards
+- [x] Define Nano, Micro and Regional profiles
+- [x] Draft generic reference architecture and offline inventory toolkit
+- [ ] Implement reusable production configuration rendering
 - [ ] Validate virtual BGP lab, filtering, RPKI, failover and monitoring
-- [ ] Develop conformance and interoperability tests
-- [ ] Establish contribution and governance processes
-- [ ] Publish international project website and alpha release
+- [x] Document conformance and interoperability evidence procedures
+- [ ] Execute and automate conformance tests
+- [x] Establish draft contribution and governance processes
+- [x] Prepare bilingual international website source
+- [ ] Publish and verify website
+- [ ] Complete alpha release gates and publish prerelease
 
 ## SIR1 physical reference implementation track
 
