@@ -1,0 +1,11 @@
+{
+  "version": "0.1",
+  "site": "example-nano",
+  "profile": "nano",
+  "switches": [
+    {
+      "id": "sw1"
+    }
+  ],
+  "route_servers": []
+}

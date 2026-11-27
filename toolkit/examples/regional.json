@@ -1,0 +1,23 @@
+{
+  "version": "0.1",
+  "site": "example-regional",
+  "profile": "regional",
+  "switches": [
+    {
+      "id": "sw1"
+    },
+    {
+      "id": "sw2"
+    }
+  ],
+  "route_servers": [
+    {
+      "id": "rs1",
+      "host_failure_domain": "host1"
+    },
+    {
+      "id": "rs2",
+      "host_failure_domain": "host2"
+    }
+  ]
+}
