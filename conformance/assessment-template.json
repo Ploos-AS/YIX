@@ -1,0 +1,235 @@
+{
+  "specification": "0.1",
+  "revision": null,
+  "profile": null,
+  "environment": null,
+  "site": null,
+  "topology_revision": null,
+  "assessor": null,
+  "date": null,
+  "route_servers_offered": null,
+  "inter_site": null,
+  "single_switch": null,
+  "results": [
+    {
+      "id": "ARCH-01",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "ARCH-02",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "ARCH-03",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "ARCH-04",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "ARCH-05",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "PEER-01",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "PEER-02",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "PEER-03",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "PEER-04",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "PEER-05",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "RS-01",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "RS-02",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "RS-03",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "RS-04",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "RS-05",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "RS-06",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "OPS-01",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "OPS-02",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "OPS-03",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "OPS-04",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "OPS-05",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "NANO-01",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "NANO-02",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "NANO-03",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "MICRO-01",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "MICRO-02",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "MICRO-03",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "REG-01",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "REG-02",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "REG-03",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    },
+    {
+      "id": "REG-04",
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "notes": "",
+      "should_deviations": []
+    }
+  ],
+  "additional_normative_clauses": [],
+  "interoperability_results": [],
+  "claim": "none"
+}
