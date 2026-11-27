@@ -1,0 +1,41 @@
+services:
+  rs:
+    build: .
+    volumes:
+      - ./bird/rs.conf:/etc/bird/bird.conf:ro
+    networks:
+      peering:
+        ipv4_address: 192.0.2.10
+        ipv6_address: 2001:db8:1::10
+  a:
+    build: .
+    volumes:
+      - ./bird/a.conf:/etc/bird/bird.conf:ro
+    networks:
+      peering:
+        ipv4_address: 192.0.2.11
+        ipv6_address: 2001:db8:1::11
+  b:
+    build: .
+    volumes:
+      - ./bird/b.conf:/etc/bird/bird.conf:ro
+    networks:
+      peering:
+        ipv4_address: 192.0.2.12
+        ipv6_address: 2001:db8:1::12
+  c:
+    build: .
+    volumes:
+      - ./bird/c.conf:/etc/bird/bird.conf:ro
+    networks:
+      peering:
+        ipv4_address: 192.0.2.13
+        ipv6_address: 2001:db8:1::13
+networks:
+  peering:
+    internal: true
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 192.0.2.0/24
+        - subnet: 2001:db8:1::/64
