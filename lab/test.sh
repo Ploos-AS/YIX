@@ -36,6 +36,15 @@ wait_ready() {
     sleep 2
   done
   echo "BGP convergence timed out: $*" >&2
+  for node in "$@"; do
+    docker compose exec -T "$node" birdc show protocols all || true
+    docker compose exec -T "$node" birdc show route table lab_roa4 all || true
+    docker compose exec -T "$node" birdc show route table lab_roa6 all || true
+  done
+  for node in a b c; do
+    docker compose exec -T "$node" birdc show protocols || true
+    docker compose exec -T "$node" birdc show route table master4 table master6 all || true
+  done
   return 1
 }
 wait_ready 2 rs rs2
