@@ -7,6 +7,14 @@ services:
       peering:
         ipv4_address: 192.0.2.10
         ipv6_address: 2001:db8:1::10
+  rs2:
+    build: .
+    volumes:
+      - ./bird/rs2.conf:/etc/bird/bird.conf:ro
+    networks:
+      peering:
+        ipv4_address: 192.0.2.20
+        ipv6_address: 2001:db8:1::20
   a:
     build: .
     volumes:
