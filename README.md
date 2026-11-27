@@ -12,7 +12,7 @@ Open specification, open source, vendor neutrality, carrier neutrality, decentra
 
 ## Scope
 
-Ethernet peering LANs, IPv4/IPv6 bilateral and optional route-server peering, BGP hygiene, RPKI, IRR filtering, monitoring, onboarding, security and reproducible deployment. Proposed Nano, Micro and Regional profiles will be specified and tested separately.
+Ethernet peering LANs, IPv4/IPv6 bilateral and optional route-server peering, BGP hygiene, RPKI, IRR filtering, monitoring, onboarding, security and reproducible deployment. Draft Nano, Micro and Regional profiles are defined; validation remains incomplete.
 
 ## First planned physical reference implementation
 
@@ -20,9 +20,18 @@ YIX-SIR1 in Sirdal, Norway, is the first planned physical implementation, initia
 
 ## Project status
 
-Early development; not a ratified industry standard. The virtual lab and existing site documentation are inputs to the future versioned specification.
+Preparing v0.1.0-alpha; not a ratified industry standard or production-ready release. The draft specification and lab are available; physical conformance is unverified.
 
-- [Architecture](docs/architecture.md)
+- [Specification v0.1](specification/v0.1.md)
+- [Profiles](profiles/README.md)
+- [Reference architecture](architecture/reference-v0.1.md)
+- [SIR1](implementations/sir1/README.md)
+- [Toolkit](toolkit/README.md)
+- [Conformance](conformance/README.md)
+- [Governance](GOVERNANCE.md)
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
+- [Lab architecture](docs/architecture.md)
 - [Peering policy](docs/peering-policy.md)
 - [Roadmap](ROADMAP.md)
 - [Security](SECURITY.md)
