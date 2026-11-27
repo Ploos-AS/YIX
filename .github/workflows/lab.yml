@@ -1,0 +1,21 @@
+name: BGP lab
+on:
+  push:
+    paths:
+      - 'lab/**'
+      - '.github/workflows/lab.yml'
+  pull_request:
+    paths:
+      - 'lab/**'
+      - '.github/workflows/lab.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run isolated BGP smoke test
+        run: bash lab/test.sh
