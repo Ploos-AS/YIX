@@ -43,3 +43,18 @@ wait_ready 1 rs
 docker compose start rs2
 wait_ready 2 rs rs2
 echo "Both route-server outage and recovery scenarios passed"
+for node in rs rs2; do
+  for pair in 'a4 203.0.113.0/24' 'a6 2001:db8:ffff::/48'; do
+    read -r proto prefix <<< "$pair"
+    output=$(docker compose exec -T a birdc show route export "$([[ "$node" == rs ]] && echo "rs${proto:1}" || echo "rs2_${proto:1}")")
+    grep -Fq "$prefix" <<< "$output"
+  done
+done
+for node in rs rs2 b c; do
+  output=$(docker compose exec -T "$node" birdc show route all)
+  if grep -Eq '203\.0\.113\.0/24|2001:db8:ffff::/48' <<< "$output"; then
+    echo "Unauthorized prefix accepted on $node" >&2
+    exit 1
+  fi
+done
+echo "Unauthorized IPv4 and IPv6 prefixes rejected"
