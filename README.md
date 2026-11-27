@@ -20,7 +20,7 @@ YIX-SIR1 in Sirdal, Norway, is the first planned physical implementation, initia
 
 ## Project status
 
-Preparing v0.1.0-alpha; not a ratified industry standard or production-ready release. The draft specification and lab are available; physical conformance is unverified.
+v0.1.0-alpha release candidate; not a ratified industry standard or production-ready release. The draft specification and lab are available; physical conformance is unverified.
 
 - [Specification v0.1](specification/v0.1.md)
 - [Profiles](profiles/README.md)
