@@ -28,3 +28,15 @@ Before any service goes live, publish port requirements, acceptable-use rules, m
 ## Not in scope
 
 µIX is not an ISP, internet transit provider, URL-shortener platform or guarantee that participants can reach the entire internet through the exchange.
+
+## Proposed production admission and technical controls
+
+Require a public ASN, authorized address resources and reachable operational contacts. Apply published criteria equally to affiliated and unaffiliated networks. Use assigned peering IP and approved MAC addresses only; prohibit unauthorized DHCP, router advertisements, spanning-tree traffic and proxy ARP/NDP while allowing necessary ARP and IPv6 neighbor discovery.
+
+Route-server policy should require first-AS validation, authorized origins and prefixes, per-session IPv4/IPv6 limits and RPKI Invalid rejection. NotFound alone is not authorization. Reject default routes and inappropriate special-use prefixes. Publish exact prefix-length limits, AS-path rules and community semantics before activation.
+
+## Enforcement and transparency
+
+Temporary port or session isolation may protect the fabric during incidents. Document reasons, notify affected participants as soon as practicable, and provide restoration and review procedures. Apply equivalent enforcement to Ploos-affiliated networks. Publish admission criteria, fees, limitations and approved participant information; protect private contacts and credentials.
+
+Formal adoption requires legal operator confirmation, participant terms, technical parameters, support hours and implementation verification. The lab does not implement every proposed production control.
