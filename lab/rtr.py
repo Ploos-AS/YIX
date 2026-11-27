@@ -26,7 +26,12 @@ class Handler(socketserver.StreamRequestHandler):
             if len(raw) != 8:
                 return
             version, kind, session, length = struct.unpack("!BBHI", raw)
-            if version != 1 or length not in (8, 12):
+            print(f"RTR request: version={version} type={kind} session={session} length={length}", flush=True)
+            if version != 1:
+                # RFC 8210 Unsupported Protocol Version, with supported version in header.
+                self.wfile.write(header(10, 4, 16 + len(raw)) + struct.pack("!I", len(raw)) + raw + struct.pack("!I", 0))
+                return
+            if length not in (8, 12):
                 return
             body = self.rfile.read(length - 8)
             if kind == 2 and length == 8:
@@ -40,6 +45,7 @@ class Handler(socketserver.StreamRequestHandler):
             else:
                 return
             response += header(7, 1, 24) + struct.pack("!IIII", 1, 60, 10, 600)
+            print(f"RTR response: {len(response)} bytes", flush=True)
             self.wfile.write(response)
 
 class Server(socketserver.ThreadingTCPServer):
