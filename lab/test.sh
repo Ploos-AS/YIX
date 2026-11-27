@@ -7,18 +7,26 @@ docker compose build
 for node in rs rs2 a b c; do
   docker compose run --rm --no-deps "$node" bird -p -c /etc/bird/bird.conf
 done
+docker compose up -d rtr
 docker compose up -d
 ready() {
   local active="$1" node output expected
   shift
   for node in "$@"; do
     output=$(docker compose exec -T "$node" birdc show protocols) || return 1
-    [[ $(grep -c 'Established' <<< "$output") -eq 6 ]] || return 1
+    [[ $(grep -Ec '^[[:space:]]*[^[:space:]]+[[:space:]]+BGP[[:space:]].*Established' <<< "$output") -eq 6 ]] || return 1
+    output=$(docker compose exec -T "$node" birdc show route table lab_roa4 all) || return 1
+    local roa6
+    roa6=$(docker compose exec -T "$node" birdc show route table lab_roa6 all) || return 1
+    output="${output}"$'\n'"${roa6}"
+    for prefix in 198.51.100.0/26 192.0.2.128/25 2001:db8:11::/48 2001:db8:aaaa::/48; do
+      grep -Fq "$prefix" <<< "$output" || { echo "$node: missing ROA $prefix" >&2; return 1; }
+    done
   done
   for node in a b c; do
     output=$(docker compose exec -T "$node" birdc show protocols) || return 1
     expected=$((active * 2))
-    [[ $(grep -c 'Established' <<< "$output") -eq "$expected" ]] || return 1
+    [[ $(grep -Ec '^[[:space:]]*[^[:space:]]+[[:space:]]+BGP[[:space:]].*Established' <<< "$output") -eq "$expected" ]] || return 1
     output=$(docker compose exec -T "$node" birdc show route table master4 table master6 all) || return 1
     for prefix in 198.51.100.0/26 198.51.100.64/26 198.51.100.128/26 2001:db8:11::/48 2001:db8:12::/48 2001:db8:13::/48; do
       grep -Fq "$prefix" <<< "$output" || return 1
@@ -31,6 +39,15 @@ wait_ready() {
     sleep 2
   done
   echo "BGP convergence timed out: $*" >&2
+  for node in "$@"; do
+    docker compose exec -T "$node" birdc show protocols all || true
+    docker compose exec -T "$node" birdc show route table lab_roa4 all || true
+    docker compose exec -T "$node" birdc show route table lab_roa6 all || true
+  done
+  for node in a b c; do
+    docker compose exec -T "$node" birdc show protocols || true
+    docker compose exec -T "$node" birdc show route table master4 table master6 all || true
+  done
   return 1
 }
 wait_ready 2 rs rs2
