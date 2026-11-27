@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.1.0-alpha (planned, unreleased)
+## v0.1.0-alpha (release candidate, unreleased)
 
 - Draft specification v0.1 and Nano, Micro, Regional profiles.
 - Generic reference architecture and planned SIR1 implementation.
