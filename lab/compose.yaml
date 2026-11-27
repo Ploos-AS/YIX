@@ -1,4 +1,12 @@
 services:
+  rtr:
+    image: python:3.13-slim
+    command: ["python", "-u", "/fixture.py"]
+    volumes:
+      - ./rtr.py:/fixture.py:ro
+    networks:
+      peering:
+        ipv4_address: 192.0.2.30
   rs:
     build: .
     volumes:
