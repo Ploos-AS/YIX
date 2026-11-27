@@ -7,6 +7,7 @@ docker compose build
 for node in rs rs2 a b c; do
   docker compose run --rm --no-deps "$node" bird -p -c /etc/bird/bird.conf
 done
+docker compose up -d rtr
 docker compose up -d
 ready() {
   local active="$1" node output expected
@@ -14,6 +15,10 @@ ready() {
   for node in "$@"; do
     output=$(docker compose exec -T "$node" birdc show protocols) || return 1
     [[ $(grep -c 'Established' <<< "$output") -eq 6 ]] || return 1
+    output=$(docker compose exec -T "$node" birdc show route table lab_roa4 table lab_roa6 all) || return 1
+    for prefix in 198.51.100.0/26 192.0.2.128/25 2001:db8:11::/48 2001:db8:aaaa::/48; do
+      grep -Fq "$prefix" <<< "$output" || return 1
+    done
   done
   for node in a b c; do
     output=$(docker compose exec -T "$node" birdc show protocols) || return 1
